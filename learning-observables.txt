@@ -1,0 +1,58 @@
+EXEMPLO: YOUTUBE
+
+  CANAL (observado/observable)
+    - listaInscritos[]
+
+    - receberInscricao(inscrito)
+    - removerInscricao(inscrito)
+    - notificaInscritos(listaInscritos[])
+        inscrito.receberNotificacao(novoVideo)
+
+
+  INSCRITOS (observador/observer)
+    - receberNotificacao(novoVideo)
+
+
+================================================================
+
+IMPLEMENTAÇAO DO ANGULAR (RXJS - ReactiveX JS)
+
+  OBSERVABLE
+    - subscribe(observer)
+    - unsubscribe(observer)
+    - notify
+        - observer.next(novoDado)
+        - observer.error(erro)
+        - observer.complete()
+
+  OBSERVER
+    - next(novoDado)
+    - error (erro) *
+    - complete() *
+
+    * podem nunca ser chamados
+
+==============================================================
+
+
+
+
+OBSERVADO           video1                  video2                          video3          ...
+==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ...
+OBSERVADOR          next(video1)            next(video2)                    next(video3)    ...
+
+ 
+ 
+ 
+
+OBSERVADO              video1                       ERRO        | 
+==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> | 
+OBSERVADOR             next(video1)                 error(ERRO) |
+
+
+
+
+
+OBSERVADO           video1                  video2                        ENCERROU   |
+==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==> ==>  |
+OBSERVADOR          next(video1)            next(video2)                  complete() |
