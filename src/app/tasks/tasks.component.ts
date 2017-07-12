@@ -10,9 +10,11 @@ import { TaskService } from './shared/task.service';
 
 export class TasksComponent implements OnInit{
   public tasks: Array<Task>;
-  public selectedTask: Task;
+  public newTask: Task;
 
-  public constructor(private taskService: TaskService){  }
+  public constructor(private taskService: TaskService){ 
+    this.newTask = new Task(null, '');
+  }
 
   public ngOnInit(){
     this.taskService.getTasks()
@@ -21,8 +23,22 @@ export class TasksComponent implements OnInit{
         error => alert("Ocorreu um no servidor, tente mais tarde.")
       )
   }
+  
+  public createTask(){
+    this.newTask.title = this.newTask.title.trim();
 
-  public onSelect(task: Task): void {
-    this.selectedTask = task;
+    if(!this.newTask.title){
+      alert("A tarefa deve ter um título");
+    }else{
+      this.taskService.createTask(this.newTask)
+        .subscribe(
+          (task) => {
+            this.tasks.push(task);
+            this.newTask = new Task(null, '');
+          },
+          () => alert("Ocorreu um no servidor, tente mais tarde.")
+        )
+    }
   }
+
 }
