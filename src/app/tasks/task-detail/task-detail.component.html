@@ -2,21 +2,27 @@
 
 <form #taskForm="ngForm" *ngIf="task">
   <div class="row">
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-6 has-feedback" [class.has-error]="title.invalid && title.touched" [class.has-success]="title.valid">
       <label for="title" class="control-label">Título</label>
-      <input [(ngModel)]="task.title" class="form-control" type="text" name="title" id="title" required>
+      <input #title="ngModel" [(ngModel)]="task.title" class="form-control" type="text" name="title" id="title" required>
+      <span class="glyphicon form-control-feedback" [class.glyphicon-ok]="title.valid" [class.glyphicon-remove]="title.invalid && title.touched" style="margin-right:20px"></span>
+      <div *ngIf="title.invalid && title.touched" class="text-danger">o título é obrigatório</div>
     </div>
     
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-3 has-feedback" [class.has-error]="deadline.invalid && deadline.touched" [class.has-success]="deadline.valid">
       <label for="deadline" class="control-label">Prazo de Entrega</label>
-      <input [(ngModel)]="task.deadline" class="form-control" type="text" name="deadline" id="deadline">
+      <input #deadline="ngModel" [(ngModel)]="task.deadline" class="form-control" type="text" name="deadline" id="deadline">
+      <span class="glyphicon form-control-feedback" [class.glyphicon-ok]="deadline.valid" [class.glyphicon-remove]="deadline.invalid && deadline.touched" style="margin-right:20px"></span>
+      <div *ngIf="deadline.invalid && deadline.touched" class="text-danger">o prazo é obrigatório</div>
     </div>
     
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-3 has-feedback" [class.has-error]="done.invalid && done.touched" [class.has-success]="done.valid">
       <label for="done" class="control-label">Situação</label>
-      <select [(ngModel)]="task.done" class="form-control" type="text" name="done" id="done">
+      <select #done="ngModel" [(ngModel)]="task.done" class="form-control" type="text" name="done" id="done" required>
         <option *ngFor="let option of taskDoneOptions" [value]="option.value">{{ option.text }}</option>
       </select>
+      <span class="glyphicon form-control-feedback" [class.glyphicon-ok]="done.valid" [class.glyphicon-remove]="done.invalid && done.touched" style="margin-right:20px"></span>
+      <div *ngIf="done.invalid && done.touched" class="text-danger">situação obrigatória</div>
     </div>
   </div>
 
@@ -28,9 +34,5 @@
   </div>
 
   <button class="btn btn-default" (click)="goBack()">Voltar</button>
-  <button type="submit" class="btn btn-success" (click)="updateTask()">Atualizar</button>
-
-  <hr>
-
-  <pre>{{ task | json }}</pre>
+  <button [disabled]="taskForm.invalid" type="submit" class="btn btn-success" (click)="updateTask()">Atualizar</button>
 </form>
