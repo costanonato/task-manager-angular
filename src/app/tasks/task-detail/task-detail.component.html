@@ -4,19 +4,19 @@
   <div class="row">
     <div class="form-group col-md-6 has-feedback" [class.has-error]="showFieldError(title)" [class.has-success]="title.valid">
       <label for="title" class="control-label">Título</label>
-      <input #title="ngModel" [(ngModel)]="task.title" class="form-control" type="text" name="title" id="title" required minlength="3" maxlength="15">
+      <input #title="ngModel" [(ngModel)]="task.title" class="form-control" type="text" name="title" id="title" required minlength="2" maxlength="255">
       <span class="glyphicon form-control-feedback" [class.glyphicon-ok]="title.valid" [class.glyphicon-remove]="showFieldError(title)" style="margin-right:20px"></span>
       
       <div *ngIf="showFieldError(title)" class="text-danger">
         <div *ngIf="title.errors.required">o título é obrigatório</div>
-        <div *ngIf="title.errors.minlength">o título deve ter no mínimo 3 caracteres</div>
-        <div *ngIf="title.errors.maxlength">o título deve ter no máximo 15 caracteres</div>
+        <div *ngIf="title.errors.minlength">o título deve ter no mínimo 2 caracteres</div>
+        <div *ngIf="title.errors.maxlength">o título deve ter no máximo 255 caracteres</div>
       </div>
     </div>
     
     <div class="form-group col-md-3 has-feedback" [class.has-error]="showFieldError(deadline)" [class.has-success]="deadline.valid">
       <label for="deadline" class="control-label">Prazo de Entrega</label>
-      <input #deadline="ngModel" [(ngModel)]="task.deadline" class="form-control" type="text" name="deadline" id="deadline">
+      <input #deadline="ngModel" [(ngModel)]="task.deadline" class="form-control" type="text" name="deadline" id="deadline" required>
       <span class="glyphicon form-control-feedback" [class.glyphicon-ok]="deadline.valid" [class.glyphicon-remove]="showFieldError(deadline)" style="margin-right:20px"></span>
       <div *ngIf="showFieldError(deadline)" class="text-danger">o prazo é obrigatório</div>
     </div>
