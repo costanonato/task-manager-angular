@@ -23,13 +23,16 @@
     "angular-in-memory-web-api": "^0.3.2",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.47",
     "jquery": "^3.2.1",
+    "moment": "^2.18.1",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
     "@angular/cli": "1.0.3",
     "@angular/compiler-cli": "^4.0.0",
+    "@types/eonasdan-bootstrap-datetimepicker": "^4.17.23",
     "@types/jasmine": "2.5.38",
     "@types/jquery": "^2.0.48",
     "@types/node": "~6.0.60",
