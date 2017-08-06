@@ -1,16 +1,18 @@
 <h1 class="page-header">Lista de Tarefas</h1>
 
 <div class="well">
-  <div class="row">
-    <div class="col-md-10">
-      <input type="text" class="form-control" [(ngModel)]="newTask.title" placeholder="Digite aqui uma nova tarefa">
+  <form (ngSubmit)="createTask()">
+    <div class="row">
+      <div class="col-md-10">
+        <input type="text" class="form-control" [(ngModel)]="newTask.title" name="title" placeholder="Digite aqui uma nova tarefa">
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-success" type="submit">
+          Adicionar Tarefa
+        </button>
+      </div>
     </div>
-    <div class="col-md-2">
-      <button class="btn btn-success" (click)="createTask()">
-        Adicionar Tarefa
-      </button>
-    </div>
-  </div>
+  </form>
 </div>
 
 <table class="table">
