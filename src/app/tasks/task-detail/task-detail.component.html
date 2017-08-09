@@ -2,21 +2,32 @@
 
 <form [formGroup]="reactiveTaskForm">
   <div class="row">
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-6 has-feedback" [class.has-error]="showFieldError(reactiveTaskForm.get('title'))" [class.has-success]="reactiveTaskForm.get('title').valid">
       <label for="title" class="control-label">Título</label>
       <input type="text" formControlName="title" id="title" class="form-control">
+      <span class="glyphicon form-control-feedback" [class.glyphicon-ok]="reactiveTaskForm.get('title').valid" [class.glyphicon-remove]="showFieldError(reactiveTaskForm.get('title'))" style="margin-right:20px"></span>
+            
+      <div *ngIf="showFieldError(reactiveTaskForm.get('title'))" class="text-danger">
+        <div *ngIf="reactiveTaskForm.get('title').errors.required">o título é obrigatório</div>
+        <div *ngIf="reactiveTaskForm.get('title').errors.minlength">o título deve ter no mínimo 2 caracteres</div>
+        <div *ngIf="reactiveTaskForm.get('title').errors.maxlength">o título deve ter no máximo 255 caracteres</div>
+      </div>
     </div>
     
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-3 has-feedback" [class.has-error]="showFieldError(reactiveTaskForm.get('deadline'))" [class.has-success]="reactiveTaskForm.get('deadline').valid">
       <label for="deadline" class="control-label">Prazo de Entrega</label>
       <input type="text" formControlName="deadline" id="deadline" class="form-control">
+      <span class="glyphicon form-control-feedback" [class.glyphicon-ok]="reactiveTaskForm.get('deadline').valid" [class.glyphicon-remove]="showFieldError(reactiveTaskForm.get('deadline'))" style="margin-right:20px"></span>
+      <div *ngIf="showFieldError(reactiveTaskForm.get('deadline'))" class="text-danger">o prazo é obrigatório</div>
     </div>
     
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-3 has-feedback" [class.has-error]="showFieldError(reactiveTaskForm.get('done'))" [class.has-success]="reactiveTaskForm.get('done').valid">
       <label for="done" class="control-label">Situação</label>
       <select class="form-control" id="done" formControlName="done">
         <option *ngFor="let option of taskDoneOptions" [value]="option.value">{{ option.text }}</option>
       </select>
+      <span class="glyphicon form-control-feedback" [class.glyphicon-ok]="reactiveTaskForm.get('done').valid" [class.glyphicon-remove]="showFieldError(reactiveTaskForm.get('done'))" style="margin-right:20px"></span>
+      <div *ngIf="showFieldError(reactiveTaskForm.get('done'))" class="text-danger">situação obrigatória</div>
     </div>
   </div>
 
