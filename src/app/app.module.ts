@@ -18,6 +18,7 @@ import { TasksComponent } from "./tasks/tasks.component";
 import { TaskDetailComponent } from "./tasks/task-detail/task-detail.component";
 
 // services imports
+import { AuthSevice } from "./shared/auth.service";
 import { TaskService } from "./tasks/shared/task.service";
 
 // modules imports
@@ -64,6 +65,7 @@ import * as datetimepicker from 'eonasdan-bootstrap-datetimepicker';
   ],
   providers: [
     Angular2TokenService,
+    AuthSevice,
     TaskService
   ],
   bootstrap: [AppComponent]
