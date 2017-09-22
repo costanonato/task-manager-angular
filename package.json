@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "angular-in-memory-web-api": "^0.3.2",
+    "angular2-token": "^0.2.0-beta.12",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "eonasdan-bootstrap-datetimepicker": "^4.17.47",
