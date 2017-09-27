@@ -27,8 +27,7 @@ export class AuthService{
   }
 
   public userSignedIn(){
-    // call Angular2-Token userSignedIn method here!
-    // returns a Boolean
+    return this.tokenService.userSignedIn();
   }
   
   
