@@ -8,7 +8,7 @@ import { User } from "./user.model";
 
 @Injectable()
 
-export class AuthSevice{
+export class AuthService{
   public constructor(private tokenService: Angular2TokenService){ }
 
   public signUp(user: User){
@@ -26,7 +26,7 @@ export class AuthSevice{
     // returns a Observable<Response>
   }
 
-  public isSignedIn(){
+  public userSignedIn(){
     // call Angular2-Token userSignedIn method here!
     // returns a Boolean
   }
