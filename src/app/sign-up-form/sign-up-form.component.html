@@ -1,6 +1,18 @@
 <h1 class="page-header">Faça o seu cadastro</h1>
 
 <div class="jumbotron">
+  <div *ngIf="formErrors" class="alert alert-danger">
+    <strong>
+      <span class="glyphicon glyphicon-warning-sign"></span>
+      Ocorreu um erro ao tentar criar a sua conta no sistema.
+    </strong>
+
+    <ul>
+      <li *ngFor="let error of formErrors">{{ error }}</li>
+    </ul>
+  </div>
+
+
   <form class="form-horizontal" [formGroup]="form" (ngSubmit)="signUpUser()">
   
     <div class="form-group has-feedback" [ngClass]="formUtils.fieldClassForErrorOrSuccess('name')">
@@ -58,7 +70,7 @@
   
     <div class="form-group">
       <div class="col-sm-offset-4 col-sm-8">
-        <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Criar Conta</button>
+        <button [disabled]="form.invalid || submitted" type="submit" class="btn btn-primary">Criar Conta</button>
       </div>
     </div>
   </form>
