@@ -21,12 +21,12 @@ export class AuthService{
     // returns a Observable<Response>
   }
 
-  public signOut(){
-    // call Angular2-Token SignOut method here!
-    // returns a Observable<Response>
+  public signOut(): Observable<Response>{
+    return this.tokenService.signOut()
+      .catch(this.handleErrors);
   }
 
-  public userSignedIn(){
+  public userSignedIn(): boolean{
     return this.tokenService.userSignedIn();
   }
   
