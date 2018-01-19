@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Angular2TokenService } from 'angular2-token';
+import { TokenService } from './shared/token.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,7 @@ import { Angular2TokenService } from 'angular2-token';
 export class AppComponent {
   title = 'Gerenciador de Tarefas';
 
-  public constructor(private tokenService: Angular2TokenService){
+  public constructor(private tokenService: TokenService){
     this.tokenService.init({
       apiBase: 'http://api.taskmanager.dev:3000',
       globalOptions: {
