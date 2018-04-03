@@ -19,4 +19,8 @@ export class NavbarComponent{
       )
   }
 
+  public userSignedIn(){
+    this.authService.userSignedIn();
+  }
+
 }

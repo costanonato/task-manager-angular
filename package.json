@@ -28,7 +28,8 @@
     "jquery": "^3.2.1",
     "moment": "^2.18.1",
     "rxjs": "^5.1.0",
-    "zone.js": "^0.8.4"
+    "zone.js": "^0.8.4",
+    "enhanced-resolve": "3.3.0"
   },
   "devDependencies": {
     "@angular/cli": "1.0.3",
