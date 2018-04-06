@@ -20,7 +20,7 @@ export class NavbarComponent{
   }
 
   public userSignedIn(){
-    this.authService.userSignedIn();
+    return this.authService.userSignedIn();
   }
 
 }
