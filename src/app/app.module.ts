@@ -26,21 +26,10 @@ import { NotAuthenticatedGuard } from "./guards/not-authenticated.guard";
 // modules imports
 import { AppRoutingModule } from "./app-routing.module";
 
-// rxjs operators
-import "rxjs/add/operator/catch";
-import "rxjs/add/operator/debounceTime";
-import "rxjs/add/operator/distinctUntilChanged";
-import "rxjs/add/operator/map";
-import "rxjs/add/operator/switchMap";
-
-// rxjs extensions
-import "rxjs/add/observable/of";
-import "rxjs/add/observable/throw";
-
 // jquery plugins
 import * as $ from 'jquery';
 import * as datetimepicker from 'eonasdan-bootstrap-datetimepicker';
-
+window['datetimepicker'] = window['datetimepicker'] = datetimepicker;
 
 @NgModule({
   declarations: [

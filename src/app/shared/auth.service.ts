@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Response } from "@angular/http";
 
-import { Observable } from "rxjs/Observable";
+import { Observable, throwError } from "rxjs";
+import { catchError } from "rxjs/operators";
 import { TokenService } from "./token.service";
 
 import { User } from "./user.model";
@@ -12,8 +13,9 @@ export class AuthService{
   public constructor(private tokenService: TokenService){ }
 
   public signUp(user: User): Observable<Response>{
-    return this.tokenService.registerAccount(user as any)
-      .catch(this.handleErrors)
+    return this.tokenService.registerAccount(user as any).pipe(
+      catchError(this.handleErrors)
+    )
   }
   
   public signIn(uid: string, password: string): Observable<Response>{
@@ -22,13 +24,15 @@ export class AuthService{
       password: password
     };
 
-    return this.tokenService.signIn(signInData)
-      .catch(this.handleErrors);
+    return this.tokenService.signIn(signInData).pipe(
+      catchError(this.handleErrors)
+    )
   }
 
   public signOut(): Observable<Response>{
-    return this.tokenService.signOut()
-      .catch(this.handleErrors);
+    return this.tokenService.signOut().pipe(
+      catchError(this.handleErrors)
+    )
   }
 
   public userSignedIn(): boolean{
@@ -38,6 +42,6 @@ export class AuthService{
   
   private handleErrors(error: Response){
     console.log("SALVANDO O ERRO NUM ARQUIVO DE LOG - DETALHES DO ERRO => ", error);
-    return Observable.throw(error);
+    return throwError(error);
   }
 }
